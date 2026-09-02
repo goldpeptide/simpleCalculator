@@ -15,27 +15,32 @@ function divide (a, b) {
     return a/b
 }
 
-let entryOne=null;
+let entryOne='';
 let operator=null; 
-let entryTwo=null;
+let entryTwo='';
 
 function operate() {
-    console.log(operator(entryOne, entryTwo))
-    result = operator(entryOne, entryTwo)
-    display.value = result
-    entryOne = result
-    return result
-    //when user presses '=' (works)
-    //also should be called when __a + operator + b___  sequence is specified
-    //needs also to round N°s with infinite decimals
+    entryOne = Number(entryOne)
+    entryTwo = Number(entryTwo)
+    if (operator === divide && entryTwo===0) {
+        clear()
+        display.value = '0÷ Error'
+    } else {
+    result = operator(entryOne, entryTwo) 
+    clear()
+    display.value = result 
+    entryOne = result}
+    //also should be called and display current 
+    // when _a + operator + b_  sequence is specified before pressing =
+    //needs to round N°s with infinite decimals
 }
 
 
 ////AC (clear all)
 function clear() {
-    entryOne=null;
+    entryOne='';
     operator=null;
-    entryTwo=null;
+    entryTwo='';
     display.value = '0'
 }
 
@@ -54,9 +59,16 @@ const digits = document.querySelectorAll('.digits')
 digits.forEach((button) => {
   button.addEventListener("click", () => {
     //each value should allow multiple digit entry for longer numbers
-    //numbers should be appended to the variable before being converted into number
-    operator != null ? entryTwo=Number(button.textContent) : entryOne=Number(button.textContent)
-    display.value = button.textContent
+    if (entryOne === '' || operator===null) {
+        entryOne += button.textContent
+        display.value = entryOne
+    }
+    else if (entryOne !=='' && operator!==null) {
+        entryTwo += button.textContent
+        display.value = entryTwo
+    }
+    else {display.value = 'arg missing'}
+    
     console.log(`entry one - ${entryOne}; entry two - ${entryTwo}`);    
     })
 });
@@ -64,23 +76,24 @@ digits.forEach((button) => {
 const operators = document.querySelectorAll('.operators')
 operators.forEach((button) => {
     button.addEventListener('click', () => {
+        if (button.id === 'equal' || (entryOne !== '' 
+            && entryTwo !== '' && operator !== null)) {
+            operate()
+            }
+
          if (button.id ==='plus') {
-            operator = add
+            operator = add        
             display.value = button.textContent
         } else if (button.id === 'minus') {
             operator = minus
             display.value = button.textContent
         } else if (button.id === 'divide') {
-            //entryOne!= null && entryTwo==0 ? console.log('Error') : //doesn't work, goes into operate()?
              operator = divide
              display.value = button.textContent
         } else if (button.id === 'multiply') {
             operator = multiply
             display.value = button.textContent
-        } else if (button.id === 'equal') {
-            entryOne==null || operator==null || 
-            entryTwo==null ? console.log('Error') : operate()
-        }
+        } 
         console.log(operator)
     })
 })
