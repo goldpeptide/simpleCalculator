@@ -8,15 +8,18 @@
     flex-wrap: wrap;
     justify-content: center;
     flex-direction: row;
-    width: 200px;
+    width: 400px;
     border: 4px solid beige;
     border-radius: 4px;
     margin: 10px;
-    gap: 10px;
-    padding: 5px;
+    gap: 20px;
+    padding: 10px;
+    padding-bottom: 20px;
+    background-color: coral;
 }
 
 .column {
+    background-color: coral;
     display: flex;
     flex-direction: column;
     align-content: center;
@@ -25,16 +28,23 @@
 }
 
 button {
+    background-color: coral;
     box-sizing: border-box;
-    width: 40px;
-    height: 40px;
+    width: 80px;
+    height: 80px;
     border: 2px solid beige;
-    font-size: 30px;
+    font-size: 50px;
     font-weight: 900;
     font-family: Courier, monospace;
     text-align: center;
-    padding: 2px;
-    border-radius: 4px;
+    padding: 4px;
+    border-radius: 8px;
+}
+
+button:focus {
+    /*background-color: rgb(76, 67, 84);*/
+    box-shadow:
+    inset -8px -6px 4px rgb(167, 43, 5);
 }
 
 button:active {
@@ -44,17 +54,21 @@ button:active {
 
 input {
     box-sizing: border-box;
-    height: 40px;
-    width: 190px;
+    height: 80px;
+    width: 380px;
     align-content: center;
     border: 4px solid beige;
     border-radius: 4px;
     background-color: black;
     color: yellowgreen;
     font-family: monospace, 'Courier New', Courier;
-    font-size: 30px;
+    font-size: 50px;
+}
+
+div {
+    background-color: coral;
 }
 
 #clear {
-    font-size: 25px;
+    font-size: 40px;
 }

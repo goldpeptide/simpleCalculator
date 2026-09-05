@@ -1,5 +1,10 @@
 # To do list
 
+*Remaining tasks:*
+
+1. Limit N° of decimal places for long/infinite numbers
+2. +potential for improvement section
+
 ## Operation structure
 
 * creating (and test) functions for:
@@ -39,7 +44,7 @@
         *When a result is displayed, pressing a new digit should clear the result and start a new calculation (instead of appending the digit to the existing result).
     2. should also have a display
       *Round answers with long decimals so that they don’t overflow the display
-      *Pressing = before entering all of the numbers or an operator shows error (can be cause issues)
+      *Pressing = before entering all of the numbers or an operator shows error? (can cause issues)
       *Display an error message if the user tries to divide by 0
 
 #### Potential for improvement

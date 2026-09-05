@@ -30,16 +30,12 @@ function operate() {
     clear()
     display.value = result 
     entryOne = result}
-    //also should be called and display current 
-    // when _a + operator + b_  sequence is specified before pressing =
     //needs to round N°s with infinite decimals
 }
-
 
 ////AC (clear all)
 function clear() {
     entryOne='';
-    operator=null;
     entryTwo='';
     display.value = '0'
 }
@@ -47,18 +43,17 @@ function clear() {
 const ac = document.querySelector('#clear')
 ac.addEventListener('click', () => {
   clear()
+  operator=null;
 })
 
 /////Display
 let display = document.querySelector('#display')
-let currentValue = display.value
 
 
 ///////button event listeners
 const digits = document.querySelectorAll('.digits')
 digits.forEach((button) => {
   button.addEventListener("click", () => {
-    //each value should allow multiple digit entry for longer numbers
     if (entryOne === '' || operator===null) {
         entryOne += button.textContent
         display.value = entryOne
@@ -76,23 +71,23 @@ digits.forEach((button) => {
 const operators = document.querySelectorAll('.operators')
 operators.forEach((button) => {
     button.addEventListener('click', () => {
-        if (button.id === 'equal' || (entryOne !== '' 
-            && entryTwo !== '' && operator !== null)) {
+         if ((button.id === 'equal') || (entryOne !== '' 
+            && entryTwo !== '')) {
             operate()
             }
-
+        
          if (button.id ==='plus') {
             operator = add        
-            display.value = button.textContent
+            //display.value = button.textContent
         } else if (button.id === 'minus') {
             operator = minus
-            display.value = button.textContent
+            //display.value = button.textContent
         } else if (button.id === 'divide') {
              operator = divide
-             display.value = button.textContent
+             //display.value = button.textContent
         } else if (button.id === 'multiply') {
             operator = multiply
-            display.value = button.textContent
+            //display.value = button.textContent
         } 
         console.log(operator)
     })
